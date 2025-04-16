@@ -1,0 +1,253 @@
+{
+  "identificacao" : {
+    "nome" : "DAF Denoxtronic 1.1 Euro 5",
+    "id_carga" : "",
+    "modelo_carga" : "M2"
+  },
+  "configuracao" : {
+    "bitrate": "500K",
+    "amostras" : 2000,
+    "valor_maximo_coleta_02" : 10,
+    "valor_minimo_coleta_02" : 2,
+    "valor_minimo_coleta_carga" : 70,
+    "valor_maximo_coleta_carga" : 100
+  },
+  "temperatura_motor" : {
+    "calculo" : "(byte_D * 256 + byte_R) * slope - offset",
+    "slope" : 0.06245,
+    "offset" : 272.9,
+    "valor_maximo_exibicao" : 1000,
+    "valor_minimo_exibicao" : -10,
+    "casas_decimais" : 0,
+    "grandeza" : "°C",
+    "id_parametro" : 44,
+    "descricao" : "Temperatura do motor",
+    "tx_id": "0x18da3df9",
+    "rx_id": "0x18daf93d",
+    "tx_frame": ["0x02","0x21","0x04","0xFF","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x21": [
+        5,
+        6
+      ]
+    }
+  },
+  "velocidade_motor" : {
+    "calculo" : "(byte_D * 256 + byte_R) * slope - offset",
+    "slope" : 1,
+    "offset" : 0,
+    "valor_maximo_exibicao" : 10000,
+    "valor_minimo_exibicao" : 0,
+    "casas_decimais" : 0,
+    "grandeza" : "RPM",
+    "id_parametro" : 51,
+    "descricao" : "Rotação do motor",
+    "tx_id": "0x18DA3DF9",
+    "rx_id": "0x18DAF93D",
+    "tx_frame": ["0x02","0x21","0x04","0xFF","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x10": [
+        4,
+        5
+      ]
+    }
+  },
+  "nox_pos" : {
+    "calculo" : "(byte_D * 256 + byte_R) * slope - offset",
+    "slope" : 1,
+    "offset" : 0,
+    "valor_maximo_exibicao" : 1000,
+    "valor_minimo_exibicao" : 0,
+    "casas_decimais" : 0,
+    "grandeza" : "ppm",
+    "id_parametro" : 0,
+    "descricao" : "NOx depois do catalisador",
+    "tx_id": "0x18DA3DF9",
+    "rx_id": "0x18DAF93D",
+    "tx_frame": ["0x02","0x21","0x04","0xFF","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x24": [
+        2,
+        3
+      ]
+    }
+  },
+  "nox_pre" : {
+    "calculo" : "(byte_D * 256 + byte_R) * slope - offset",
+    "slope" : 1,
+    "offset" : 0,
+    "valor_maximo_exibicao" : 1000,
+    "valor_minimo_exibicao" : 0,
+    "casas_decimais" : 0,
+    "grandeza" : "ppm",
+    "id_parametro" : 0,
+    "descricao" : "NOx antes do catalisador",
+    "tx_id": "0x18DA3DF9",
+    "rx_id": "0x18DAF93D",
+    "tx_frame": ["0x02","0x21","0x04","0xFF","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x25": [
+        1,
+        2
+      ]
+    }
+  },
+  "temp_arla" : {
+    "calculo" : "(byte_D * 256 + byte_R) * slope - offset",
+    "slope" : 0.06245,
+    "offset" : 272.9,
+    "valor_maximo_exibicao" : 1000,
+    "valor_minimo_exibicao" : -10,
+    "casas_decimais" : 0,
+    "grandeza" : "ºC",
+    "id_parametro" : 7,
+    "descricao" : "Temperatura do Arla no reservatório",
+    "tx_id": "0x18DA3DF9",
+    "rx_id": "0x18DAF93D",
+    "tx_frame": ["0x02","0x21","0x02","0xFF","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x21": [
+        1,
+        2
+      ]
+    }
+  },
+  "temp_pre" : {
+    "calculo" : "(byte_D * 256 + byte_R) * slope - offset",
+    "slope" : 0.06245,
+    "offset" : 272.9,
+    "valor_maximo_exibicao" : 1000,
+    "valor_minimo_exibicao" : -10,
+    "casas_decimais" : 0,
+    "grandeza" : "ºC",
+    "id_parametro" : 3,
+    "descricao" : "Temperatura antes do catalisador",
+    "tx_id": "0x18DA3DF9",
+    "rx_id": "0x18DAF93D",
+    "tx_frame": ["0x02","0x21","0x02","0xFF","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x21": [
+        3,
+        4
+      ]
+    }
+  },
+  "temp_pos" : {
+    "calculo" : "(byte_D * 256 + byte_R) * slope - offset",
+    "slope" : 0.06245,
+    "offset" : 272.9,
+    "valor_maximo_exibicao" : 1000,
+    "valor_minimo_exibicao" : -10,
+    "casas_decimais" : 0,
+    "grandeza" : "ºC",
+    "id_parametro" : 29,
+    "descricao" : "Temperatura depois do catalisador",
+    "tx_id": "0x18DA3DF9",
+    "rx_id": "0x18DAF93D",
+    "tx_frame": ["0x02","0x21","0x02","0xFF","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x21": [
+        5,
+        6
+      ]
+    }
+  },
+  "nivel_arla" : {
+    "calculo" : "(byte_D * 256 + byte_R) * slope - offset",
+    "slope" : 0.01,
+    "offset" : 0,
+    "valor_maximo_exibicao" : 100,
+    "valor_minimo_exibicao" : 0,
+    "casas_decimais" : 1,
+    "grandeza" : "%",
+    "id_parametro" : 6,
+    "descricao" : "Nivel do tanque de Arla",
+    "tx_id": "0x18DA3DF9",
+    "rx_id": "0x18DAF93D",
+    "tx_frame": ["0x02","0x21","0x02","0xFF","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x23": [
+        3,
+        4
+      ]
+    }
+  },
+  "rotacao_bomba" : {
+    "calculo" : "(byte_D * 256 + byte_R) * slope - offset",
+    "slope" : 1,
+    "offset" : 0,
+    "valor_maximo_exibicao" : 10000,
+    "valor_minimo_exibicao" : 0,
+    "casas_decimais" : 0,
+    "grandeza" : "rpm",
+    "id_parametro" : 18,
+    "descricao" : "Velocidade de rotação da bomba de Arla",
+    "tx_id": "0x18DA3DF9",
+    "rx_id": "0x18DAF93D",
+    "tx_frame": ["0x02","0x21","0x02","0xFF","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x24": [
+        4,
+        5
+      ]
+    }
+  },
+  "arla_injetado" : {
+    "calculo" : "(byte_D * 256 + byte_R) * slope - offset",
+    "slope" : 1,
+    "offset" : 0,
+    "valor_maximo_exibicao" : 10000,
+    "valor_minimo_exibicao" : 0,
+    "casas_decimais" : 1,
+    "grandeza" : "g/h",
+    "id_parametro" : 33,
+    "descricao" : "Quantidade de Arla injetado",
+    "tx_id": "0x18DA3DF9",
+    "rx_id": "0x18DAF93D",
+    "tx_frame": ["0x02","0x21","0x02","0xFF","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x25": [
+        1,
+        2
+      ]
+    }
+  },
+  "pressao_turbo" : {
+    "calculo" : "(byte_D * 256 + byte_R) * slope - offset",
+    "slope" : 1,
+    "offset" : 0,
+    "valor_maximo_exibicao" : 10000,
+    "valor_minimo_exibicao" : 0,
+    "casas_decimais" : 0,
+    "grandeza" : "mbar",
+    "id_parametro" : 12,
+    "descricao" : "Pressão do turbocompressor",
+    "tx_id": "0x18da00f9",
+    "rx_id": "0x18daf900",
+    "tx_frame": ["0x04","0x21","0x0D","0x01","0x01","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x00": [
+        3,
+        4
+      ]
+    }
+  },
+  "carga_motor" : {
+    "calculo" : "(byte_D * 256 + byte_R) * slope - offset",
+    "slope" : 1,
+    "offset" : 125,
+    "valor_maximo_exibicao" : 100,
+    "valor_minimo_exibicao" : 0,
+    "casas_decimais" : 0,
+    "grandeza" : "%",
+    "id_parametro" : 11,
+    "descricao" : "Carga do motor",
+    "tx_id": "broadcast",
+    "rx_id": "0x0CF00400",
+    "bytes_leitura": {
+      "0x00": [
+        2
+      ]
+    }
+  }
+}

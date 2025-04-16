@@ -1,0 +1,34 @@
+{
+    "identificacao": {
+        "nome": "Scania Denoxtronic 1.1 Euro 5",
+        "id_carga": "0028",
+        "modelo_carga": "M2"
+    },
+    "nivel_reservatorio_arla": {
+        "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+        "slope": 0.01,
+        "offset": 0,
+        "valor_maximo_exibicao": 100,
+        "valor_minimo_exibicao": 0,
+        "casas_decimais": 0,
+        "grandeza": "%",
+        "id_parametro": 6,
+        "descricao": "N\u00edvel Arla:",
+        "tx_id": "0x18DA3DFA",
+        "rx_id": "0x18DAFA3D",
+        "tx_frame": [
+            "0x03",
+            "0x30",
+            "0x1C",
+            "0x01",
+            "0xFF",
+            "0xFF",
+            "0xFF",
+            "0xFF"
+        ],
+        "bytes_leitura": [
+            4,
+            5
+        ]
+    }
+}
