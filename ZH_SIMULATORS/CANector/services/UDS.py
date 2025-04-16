@@ -83,13 +83,12 @@ def receive_flow_data(channel:Channel, rx_id, message:Frame):
         flow_byte_len = message.data[1]
         flow_frame_len = (flow_byte_len // 7)
         flow_received_data = {"0x10":[byte for byte in message.data]}
-        frame_counter = 0
-        while frame_counter < flow_frame_len:
+        frame_counter = 1
+        while frame_counter <= flow_frame_len:
             msg = channel.read(timeout=2000)
             if msg.id == rx_id:
-                if frame_counter < flow_frame_len:
-                    flow_received_data.update({hex(msg.data[0]):[byte for byte in msg.data]})
-                    frame_counter += 1
+                flow_received_data.update({hex(msg.data[0]):[byte for byte in msg.data]})
+                frame_counter += 1
         return flow_received_data
     except Exception as e:
         print(f"Error:{e} --- receive_flow_data")

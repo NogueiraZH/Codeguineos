@@ -84,7 +84,9 @@ class Request:
                             time=0x00,
                             padding=0xFF
                         )
-                        self.flowcontrol(message)
+
+                        if self.flowcontrol(message): return True
+                        else: return False
 
                     # Verifica se o frame recebido é um frame de resposta válida
                     elif message.data[1] != self.nrc:
@@ -116,7 +118,12 @@ class Request:
         except Exception as e:
             print(f"Erro in Request receive: {e}")
             return False
+
     def calculator(self, parameter:Dict[str,any], flow_data:any = None):
+        """
+        Método responsável por calcular o resultado com base nos parâmetros fornecidos.
+        :return:
+        """
         try:
             slope = parameter["slope"]
             offset = parameter["offset"]

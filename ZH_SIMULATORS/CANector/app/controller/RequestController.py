@@ -54,8 +54,9 @@ class RequestController:
                     else:
                         request = Request(self.channel, parameter=parameter)
                         request.monitor()
-                        time.sleep(0.050)
+
                         self.response.update({parameter["id_parametro"]:[request.result,parameter["grandeza"]]})
+                    time.sleep(0.005)
                     self.computenox.colect(self.response)
                     self.response.update(self.computenox.getresult())
 

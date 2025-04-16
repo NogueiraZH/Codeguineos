@@ -35,14 +35,23 @@ class Computenox:
 
     def colect(self, dados:Dict[str, any]):
         o2, engine_load, nox_pos, nox_pre = 0, 0, 0, 0
+
+        # Coleta de dados utilizados para computar nox
         for key, value in dados.items():
-            if key == 1: o2 = value[0]
-            elif key == 11: engine_load = value[0]
-            elif key == 0: nox_pos = value[0]
-            elif key == 2: nox_pre = value[0]
+            if key == 1:
+                if value[0] is not None:
+                    if type(value[0]) is not str: o2 = value[0]
+            elif key == 11:
+                if value[0] is not None:
+                    if type(value[0]) is not str: engine_load = value[0]
+            elif key == 0:
+                if value[0] is not None:
+                    if type(value[0]) is not str: nox_pos = value[0]
+            elif key == 2:
+                if value[0] is not None:
+                    if type(value[0]) is not str: nox_pre = value[0]
 
-
-        if nox_pos is not None and nox_pos > 0:
+        if nox_pos > 0 and nox_pos < 3000:
             self.dewpoint["900"] = "Dados validos"
             if self.o2_pos is True:
                 if (o2 >= self.minimo_o2) and (o2 <= self.maximo_o2):
@@ -55,8 +64,7 @@ class Computenox:
                                 self.media_nox["300"][0] = round(self.nox_total["500"][0] / self.n_amostras["600"])
                             else: self.total_amostras+= 1
             else:
-                # Coleta de nox pré após dados validos
-                print(f"Nox pos: {nox_pos} ppm")
+                # Adicionar Coleta de nox pré após dados validos
                 if engine_load is not None:
                     if (engine_load >= self.minimo_carga) and (engine_load <= self.maximo_carga):
                         print(f"Carga: {engine_load}")
@@ -66,10 +74,10 @@ class Computenox:
                                 self.nox_total["500"][0] += int(nox_pos)
                                 self.progresso["400"][0] = int((self.n_amostras["600"] / self.limit_amostras) * 100)
                                 self.media_nox["300"][0] = round(self.nox_total["500"][0] / self.n_amostras["600"])
-                            else: self.total_amostras+= 1
+                            else: self.total_amostras += 1
             time.sleep(.02)
-        else:
-            self.dewpoint["900"] = "Aguardando dewpoint"
+        # else:
+        #     self.dewpoint["900"] = "Aguardando dewpoint"
 
     def getresult(self):
         self.result.update(self.dewpoint)
