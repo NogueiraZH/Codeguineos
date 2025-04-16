@@ -60,7 +60,6 @@ class RequestController:
                     self.response.update(self.computenox.getresult())
 
 
-
     def stop(self):
         self.event.set()
         self.thread.join()
