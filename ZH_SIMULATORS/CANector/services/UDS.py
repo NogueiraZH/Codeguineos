@@ -91,8 +91,6 @@ def receive_flow_data(channel: Channel, rx_id, message: Frame):
                 flow_received_data[hex(msg.data[0])] = list(msg.data)
                 frame_counter += 1
                 print("Frame recebido:", hex(msg.data[0]), "Dados:", msg.data)
-            else:
-                return False
 
         return flow_received_data
     except Exception as e:
