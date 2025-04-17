@@ -1,0 +1,392 @@
+{
+  "identificacao": {
+    "nome": "Volkswagen Denoxtronic 2.2 Euro 5",
+    "id_carga": "0018",
+    "modelo_carga": "M2",
+    "versao": "1.1.0"
+  },
+  "configuracao": {
+    "bitrate": "500K",
+    "timeout_1": 600,
+    "timeout_2": 300,
+    "timeout_3": 1200,
+    "amostras": 2000,
+    "valor_maximo_coleta_02": 10,
+    "valor_minimo_coleta_02": 2,
+    "valor_minimo_coleta_carga": 70,
+    "valor_maximo_coleta_carga": 100,
+    "resultado_minimo_eficiente_ppm": 0,
+    "resultado_maximo_eficiente_ppm": 10,
+    "resultado_minimo_saturando_ppm": 11,
+    "resultado_maximo_saturando_ppm": 20,
+    "resultado_minimo_saturado_ppm": 21,
+    "resultado_maximo_saturado_ppm": 100,
+    "resultado_minimo_eficiente_porcentagem": 85,
+    "resultado_maximo_eficiente_porcentagem": 100,
+    "resultado_minimo_saturando_porcentagem": 50,
+    "resultado_maximo_saturando_porcentagem": 84,
+    "resultado_minimo_saturado_porcentagem": 0,
+    "resultado_maximo_saturado_porcentagem": 49
+  },
+  "nivel_reservatorio_arla": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.01221,
+    "offset": 0,
+    "valor_maximo_exibicao": 100,
+    "valor_minimo_exibicao": 0,
+    "casas_decimais": 0,
+    "grandeza": "%",
+    "id_parametro": 6,
+    "descricao": "Nível do ARLA no tanque",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x36","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {"0x21":[4, 5]}
+  },
+  "temperatura_reservatorio_arla": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.1,
+    "offset": 273.14,
+    "valor_maximo_exibicao": 100,
+    "valor_minimo_exibicao": -10,
+    "casas_decimais": 2,
+    "grandeza": "°C",
+    "id_parametro": 7,
+    "descricao": "Temp. do ARLA no tanque",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x36","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x10":[7],
+      "0x21":[1]
+    }
+  },
+  "temperatura_pre_catalisador": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.0987,
+    "offset": 273,
+    "valor_maximo_exibicao": 1000,
+    "valor_minimo_exibicao": -10,
+    "casas_decimais": 0,
+    "grandeza": "°C",
+    "id_parametro": 3,
+    "descricao": "Temp. pré catalisador",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x0D","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {"0x21":[2,3]}
+  },
+  "nox_pos": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 1,
+    "offset": 0,
+    "valor_maximo": 2000,
+    "valor_minimo": 0,
+    "casas_decimais": 0,
+    "grandeza": "ppm",
+    "id_parametro": 0,
+    "descricao": "NOx pós catalisador",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x32","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {"0x10":[6,7]}
+  },
+  "nox_pre": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 1,
+    "offset": 0,
+    "valor_maximo_exibicao": 2000,
+    "valor_minimo_exibicao": 0,
+    "casas_decimais": 0,
+    "grandeza": "ppm",
+    "id_parametro": 2,
+    "descricao": "NOx pré catalisador",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x35","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {"0x10":[6,7]}
+  },
+  "o2_pos": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.001,
+    "offset": 0,
+    "valor_maximo_exibicao": 20,
+    "valor_minimo_exibicao": 0,
+    "casas_decimais": 2,
+    "grandeza": "%",
+    "id_parametro": 1,
+    "descricao": "O2 pós catalisador",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x32","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {"0x21":[3,4]}
+  },
+  "carga": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 1,
+    "offset": 0,
+    "valor_maximo_exibicao": 100,
+    "valor_minimo_exibicao": 0,
+    "casas_decimais": 0,
+    "grandeza": "%",
+    "id_parametro": 11,
+    "descricao": "Carga",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x32","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {"0x21":[3,4]}
+  },
+  "pressao_turbo": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.001,
+    "offset": 0,
+    "valor_maximo_exibicao": 10,
+    "valor_minimo_exibicao": 0,
+    "casas_decimais": 2,
+    "grandeza": "bar",
+    "id_parametro": 12,
+    "descricao": "Pressão da turbina",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x23","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {"0x10":[6,7]}
+  },
+  "estado_dosagem": {
+    "status": {
+      "0": "Iniciando",
+      "1": "Função 'Wake-Up'",
+      "2": "Modo Descongelação",
+      "3": "Espera",
+      "4": "Espera",
+      "6": "Erro",
+      "7": "Dosagem de ARLA",
+      "8": "Drenagem",
+      "9": "Sem dosificação de ARLA"
+    },
+    "id_parametro": 4,
+    "descricao": "Estado de dosagem do ARLA",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x4F","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {"0x22":[3]}
+  },
+  "pressao_adblue": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.1,
+    "offset": 0,
+    "valor_maximo_exibicao": 1000,
+    "valor_minimo_exibicao": 0,
+    "casas_decimais": 1,
+    "grandeza": "bar",
+    "id_parametro": 5,
+    "descricao": "Pressão do ARLA",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x54","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {"0x10":[5,6]}
+  },
+  "estado_bomba_resposta": {
+    "status": {
+      "0": "Desconexão",
+      "1": "Verificação do Sistema",
+      "2": "Dosagem de ARLA",
+      "3": "Falha",
+      "7": "Desligar",
+      "8": "Modo Diagnóstico",
+      "14": "Modo Erro (Permanente)"
+    },
+    "id_parametro": 15,
+    "descricao": "Estado da bomba de ARLA",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x4f","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {"0x21":[2]}
+  },
+  "estado_bomba_solicitude": {
+    "status": {
+      "0": "Desconexão",
+      "1": "Verificação do Sistema",
+      "2": "Dosagem de ARLA",
+      "3": "Erro (Temporal)",
+      "7": "Desligar",
+      "8": "Modo Diagnóstico",
+      "14": "Modo Erro (Permanente)"
+    },
+    "id_parametro": 16,
+    "descricao": "Estado solicitado da bomba de ARLA",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x4f","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {"0x21":[3]}
+  },
+  "porcentagem_ativacao_bomba_arla": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.01,
+    "offset": 0,
+    "valor_maximo_exibicao": 100,
+    "valor_minimo_exibicao": 0,
+    "casas_decimais": 2,
+    "grandeza": "%",
+    "id_parametro": 17,
+    "descricao": "Ativação da bomba de ARLA",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x54","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {"0x21":[2,3]}
+  },
+  "rpm_bomba_arla": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.5,
+    "offset": 0,
+    "valor_maximo_exibicao": 10000,
+    "valor_minimo_exibicao": 0,
+    "casas_decimais": 0,
+    "grandeza": "rpm",
+    "id_parametro": 18,
+    "descricao": "Rotação da bomba de Arla",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x54","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x10":[7],
+      "0x21": [1]
+    }
+  },
+  "temperatura_gases_escapes_diante_doc": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.00284,
+    "offset": 273,
+    "valor_maximo_exibicao": 1000,
+    "valor_minimo_exibicao": -10,
+    "casas_decimais": 0,
+    "grandeza": "°C",
+    "id_parametro": 29,
+    "descricao": "Temp. pós DOC",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x0c","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x21":[2,3]
+    }
+  },
+  "temperatura_gases_escapes_atras_doc": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.1,
+    "offset": 273,
+    "valor_maximo_exibicao": 1000,
+    "valor_minimo_exibicao": -10,
+    "casas_decimais": 0,
+    "grandeza": "°C",
+    "id_parametro": 28,
+    "descricao": "Temp. pré DOC",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x0E","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x21":[2,3]
+    }
+  },
+  "temperatura_gases_escapes_atras_dpf": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.1,
+    "offset": 273.14,
+    "valor_maximo_exibicao": 1000,
+    "valor_minimo_exibicao": -10,
+    "casas_decimais": 0,
+    "grandeza": "°C",
+    "id_parametro": 30,
+    "descricao": "Temp. pré DPF",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x08","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x10":[6,7]
+    }
+  },
+  "quantidade_adblue_requerida": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.3,
+    "offset": 0,
+    "valor_maximo_exibicao": 10000,
+    "valor_minimo_exibicao": 0,
+    "casas_decimais": 0,
+    "grandeza": "g/h",
+    "id_parametro": 14,
+    "descricao": "Quant. de ARLA solicitada",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x4F","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x10":[5,6]
+    }
+  },
+  "qualidade_adblue": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.25,
+    "offset": 0,
+    "valor_maximo_exibicao": 100,
+    "valor_minimo_exibicao": 0,
+    "casas_decimais": 0,
+    "grandeza": "%",
+    "id_parametro": 34,
+    "descricao": "Qualidade do ARLA",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x36","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x23": [7],
+      "0x24": [1]
+    }
+  },
+  "contrapressao_gases_escape_frente_acelerador_gases_escape": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.001,
+    "offset": 0,
+    "valor_maximo_exibicao": 10000,
+    "valor_minimo_exibicao": 0,
+    "casas_decimais": 2,
+    "grandeza": "mbar",
+    "id_parametro": 35,
+    "descricao": "Contrapressão dos gases de escape",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x27","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x10": [6,7]
+    }
+  },
+  "temperatura_bomba_arla":{
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.00628,
+    "offset": 273.14,
+    "valor_maximo_exibicao": 1000,
+    "valor_minimo_exibicao": -10,
+    "casas_decimais": 0,
+    "grandeza": "°C",
+    "id_parametro": 45,
+    "descricao": "Temp. da bomba de ARLA",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x54","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x21": [6,7]
+    }
+  },
+  "temperatura_motor": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.1,
+    "offset": 273.1,
+    "valor_maximo_exibicao": 1000,
+    "valor_minimo_exibicao": -10,
+    "casas_decimais": 0,
+    "grandeza": "°C",
+    "id_parametro": 44,
+    "descricao": "Temperatura do motor",
+    "tx_id": "0x18DA00F0",
+    "rx_id": "0x18DAF000",
+    "tx_frame": ["0x03","0x22","0xE0","0x00","0xFF","0xFF","0xFF","0xFF"],
+    "bytes_leitura": {
+      "0x10": [6,7]
+    }
+  }
+}
