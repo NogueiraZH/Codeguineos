@@ -1,4 +1,5 @@
 import time
+from getpass import fallback_getpass
 from time import sleep
 from typing import Dict
 
@@ -17,6 +18,9 @@ class Computenox:
     nox_total:Dict[str, any] = {"500":[0, "ppm"]}
     n_amostras:Dict[str, any] = {"600":0}
     result:Dict[str, any] = {}
+    DEWPOINT = False
+    DEW_COUNT = 0
+    VALID_NOX = 0
 
     def __init__(self, load:Dict[str, any]):
         self.load = load
@@ -31,6 +35,19 @@ class Computenox:
             else:
                 if valor["id_parametro"] == 1:
                     self.o2_pos = True
+
+    def validate_nox_point(self, COLECTED_NOX):
+        if COLECTED_NOX and not isinstance(COLECTED_NOX, str):
+            if COLECTED_NOX > 0 and COLECTED_NOX < 3000:
+                if self.DEW_COUNT > 5:
+                    self.DEWPOINT = True
+                    self.dewpoint["900"] = "Dados validos"
+                if self.DEWPOINT is not True:
+                    if self.VALID_NOX != COLECTED_NOX:
+                        self.VALID_NOX = COLECTED_NOX
+                        self.DEW_COUNT +=1
+
+
 
 
     def colect(self, dados:Dict[str, any]):
@@ -51,7 +68,9 @@ class Computenox:
                 if value[0] is not None:
                     if type(value[0]) is not str: nox_pre = value[0]
 
-        if nox_pos > 0 and nox_pos < 3000:
+        self.validate_nox_point(nox_pos)
+
+        if self.DEWPOINT:
             self.dewpoint["900"] = "Dados validos"
             if self.o2_pos is True:
                 if (o2 >= self.minimo_o2) and (o2 <= self.maximo_o2):
@@ -76,8 +95,6 @@ class Computenox:
                                 self.media_nox["300"][0] = round(self.nox_total["500"][0] / self.n_amostras["600"])
                             else: self.total_amostras += 1
             time.sleep(.02)
-        # else:
-        #     self.dewpoint["900"] = "Aguardando dewpoint"
 
     def getresult(self):
         self.result.update(self.dewpoint)

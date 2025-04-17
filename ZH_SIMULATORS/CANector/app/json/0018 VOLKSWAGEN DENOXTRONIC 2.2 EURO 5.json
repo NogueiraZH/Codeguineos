@@ -387,5 +387,21 @@
     "bytes_leitura": {
       "0x10": [6,7]
     }
+  },
+  "rpm_motor": {
+    "calculo": "(byte_D * 256 + byte_R) * slope - offset",
+    "slope": 0.125,
+    "offset": 0,
+    "valor_maximo_exibicao": 1000,
+    "valor_minimo_exibicao": -10,
+    "casas_decimais": 0,
+    "grandeza": "rpm",
+    "id_parametro": 51,
+    "descricao": "rpm do motor",
+    "tx_id": "broadcast",
+    "rx_id": "0x0CF00400",
+    "bytes_leitura": {
+      "0x00": [3,4]
+    }
   }
 }
