@@ -131,10 +131,9 @@
     "grandeza": "%",
     "id_parametro": 11,
     "descricao": "Carga",
-    "tx_id": "0x18DA00F0",
-    "rx_id": "0x18DAF000",
-    "tx_frame": ["0x03","0x22","0xE0","0x32","0xFF","0xFF","0xFF","0xFF"],
-    "bytes_leitura": {"0x21":[3,4]}
+    "tx_id": "broadcast",
+    "rx_id": "0x0CF00300",
+    "bytes_leitura": {"0x00":[2]}
   },
   "pressao_turbo": {
     "calculo": "(byte_D * 256 + byte_R) * slope - offset",
