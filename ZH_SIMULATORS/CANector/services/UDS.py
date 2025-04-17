@@ -78,20 +78,25 @@ def tester_present(ch, can_id, padding):
     )
 
 
-def receive_flow_data(channel:Channel, rx_id, message:Frame):
+def receive_flow_data(channel: Channel, rx_id, message: Frame):
     try:
         flow_byte_len = message.data[1]
-        flow_frame_len = (flow_byte_len // 7)
-        flow_received_data = {"0x10":[byte for byte in message.data]}
+        flow_frame_len = flow_byte_len // 7
+        flow_received_data = {"0x10": list(message.data)}
         frame_counter = 1
+
         while frame_counter <= flow_frame_len:
             msg = channel.read(timeout=2000)
-            if msg.id == rx_id:
-                flow_received_data.update({hex(msg.data[0]):[byte for byte in msg.data]})
+            if msg and msg.id == rx_id:
+                flow_received_data[hex(msg.data[0])] = list(msg.data)
                 frame_counter += 1
+                print("Frame recebido:", hex(msg.data[0]), "Dados:", msg.data)
+            else:
+                return False
+
         return flow_received_data
     except Exception as e:
-        print(f"Error:{e} --- receive_flow_data")
+        print(f"Error: {e} --- receive_flow_data")
         return False
 
 #---Manda o primeiro frame de um bloco de frames
